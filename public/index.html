@@ -1,12 +1,25 @@
-<html>
+<html ng-app="App">
 	<head>
-		<title></title>			
+		<title>Tibbco index Page</title>
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,300' rel='stylesheet' type='text/css'>			
+		<link rel="stylesheet" href="vendors/bootstrap/dist/fonts/glyphicons-halflings-regular.eot">
+		<link rel="stylesheet" type="text/css" href="vendors/bootstrap/dist/fonts/glyphicons-halflings-regular.woff">
+		<link rel="stylesheet" type="text/css" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 		<link href="css/styles.css" rel="stylesheet">
+
+		<script type="text/javascript" src="vendors/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="vendors/angular/angular.min.js"></script>
+		<script type="text/javascript" src="vendors/angular-ui-router/release/angular-ui-router.min.js"></script>
 	</head>
 	<body>
-		<img src="img/comp/gulp.jpg" width="400" height="300">
-		<h1>Loading gulp css tasks</h1>
+		
+		<div ui-view></div>
+
 		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/controllers/mainController.js"></script>
+		<script type="text/javascript" src="js/controllers/pubController.js"></script>
 		<script src="http://localhost:35729/livereload.js"></script>
 	</body>
 </html>

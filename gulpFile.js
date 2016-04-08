@@ -7,7 +7,8 @@ var imagemin = require('gulp-imagemin');
 
 var SCRIPTS_PATH = 'public/js/**/*.js';
 var HTML_PATH = 'public/**/*.html';
-var CSS_PATH = 'public/**/*.css';
+var VIEWS_HTML_PATH = 'public/views/**/*.html';
+var CSS_PATH = 'public/css/**/*.css';
 var IMG_SRC = 'public/img/src/**/*.*';
 var IMG_COM_DEST = 'public/img/comp/';
 
@@ -44,12 +45,18 @@ gulp.task('html', function() {
 		.pipe(livereload());
 });
 
+gulp.task('views', function() {
+	return gulp.src(VIEWS_HTML_PATH)
+		.pipe(livereload());
+})
+
 /*Gulp: Watch task*/
 gulp.task('watch', function() {	
 	require('./server.js');
 	livereload.listen();
 	gulp.watch(SCRIPTS_PATH, ['scripts']);
 	gulp.watch(HTML_PATH, ['html']);
+	gulp.watch(VIEWS_HTML_PATH, ['views']);
 	gulp.watch(CSS_PATH, ['styles']);
 	gulp.watch(IMG_SRC, ['images']);
 });

@@ -1,0 +1,73 @@
+<section class = "main">
+	<nav class = "navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" ui.sref="main">
+					<div class = "toogle-side">
+						<span class = "ion-navicon"></span>
+					</div>
+					<img src="img/comp/tibco_logo.png" width="150" height="30" style = "color: #fff;">
+				</a>
+			</div>			
+		</div>
+	</nav>
+	
+	<div id="wrapper">
+	    <div id="sidebar-wrapper" ng-style = "theme">        
+	        <div class="sidebar-header">
+	            <h5> Main Navigation Panel</h5>
+	        </div>
+	        <ul class="sidebar-nav">
+	            <li >
+	                <a><span class = "ion-speedometer icon"></span> Dashboard</a>
+	            </li>                
+	            <li>
+	                <a  class = "sub-menu"><span class="ion-bug icon"></span> Error List</a>
+	                <ul class = "sub-menu-items">
+	                	<li><a ui-sref="main.pub"><span class="ion-ios-circle-outline" style="margin-right: 8px"></span>Pub Error</a></li>
+	                	<li><a href= ""><span class="ion-ios-circle-outline" style="margin-right: 8px"></span>Sub Error</a></li>
+	                </ul>
+	            </li>                  
+	            <li ng-if = "role == 'Admin'">
+	                <a ui-sref="landing.add"><span class="ion-ios-plus-outline icon"></span> Project Closure</a>
+	            </li>
+	            <li>
+	                <a ui-sref="landing.contact"><span class="ion-paper-airplane icon"></span> Contact</a>
+	            </li>                   
+	        </ul>
+	    </div>
+	    <div id = "page-content-wrapper">	            
+	        <div class="container-fluid">
+	            <div ui-view></div>
+	        </div>            
+	    </div> 
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var $subMenu = $('.sub-menu-items');
+			$subMenu.hide();
+
+			$('.sidebar-nav >li > a').click(function() {	
+				$(".sidebar-nav li").removeClass('tab');				
+				$(".sidebar-nav li a").removeClass('active');
+				$(this).addClass('active');
+				$(this).parent().addClass('tab');
+				$subMenu.slideUp();
+
+				if($(this).hasClass('sub-menu')) {					
+					if($(this).hasClass('submenu-open')) {
+						$(this).removeClass('submenu-open');
+						$subMenu.slideUp();
+					} else {
+						$(this).addClass('submenu-open');
+						$subMenu.slideDown();					
+					}
+				} else {
+					$('.sidebar-nav li a').removeClass('submenu-open');
+				}				
+			});			
+
+		})
+	</script>
+</section>
