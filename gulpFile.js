@@ -4,6 +4,8 @@ var jshint = require('gulp-jshint');
 var csslint = require('gulp-csslint');
 var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
+var open = require('gulp-open');
+var os = require('os');
 
 var SCRIPTS_PATH = 'public/js/**/*.js';
 var HTML_PATH = 'public/**/*.html';
@@ -61,5 +63,19 @@ gulp.task('watch', function() {
 	gulp.watch(IMG_SRC, ['images']);
 });
 
+/*Gulp: open in the default browser */
+var browser = os.platform() === 'linux' ? 'google-chrome' : (
+	os.platform() === 'darwin' ? 'google chrome': (
+	os.platform() === 'win32' ? 'chrome' : 'firefox'));
+
+gulp.task('open', function() {
+	var options = {
+		uri: 'http://localhost:3000',
+		app: browser
+	};
+
+	gulp.src(__filename)
+		.pipe(open(options));
+});
 /* Gulp default task*/
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'open']);
